@@ -116,3 +116,63 @@ sudo sh play.sh start
 sudo sh play.sh init
 ```
 
+
+
+# 2. IBM Cloud
+
+## 2.1 create IBM cloud account
+
+Open `Cloud Accounts`- `IBM`, create a new Account. You can just select the default option.
+
+Put your Api-Key.
+
+## 2.2 Create Stack
+
+**Image**
+
+Maybe Ubuntu.(which you want)
+
+**Key**
+
+the key you created via IBM Cloud.
+
+**Zone**
+
+`us-south` is better.
+
+**Port**
+
+the port that you want to open to the public.
+
+**User data**
+
+bash commands that you want to execute.
+
+For Bwb, it is:
+
+```bash
+sudo apt-get -y remove docker docker-engine docker.io containerd runc
+sudo apt-get -y update
+sudo apt-get -y install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get -y update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo docker pull biodepot/bwb:latest
+sudo docker run --rm -p 6080:6080 -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.X11-unix:/tmp/.X11-unix  --privileged --group-add root biodepot/bwb
+```
+
+*remember to add `sudo` and `-y`.*
+
+## 2.3 Create Deploy
+
+Click `Deploy`.
+
+Then you will have a new instance on IBM Cloud.
