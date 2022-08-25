@@ -39,8 +39,6 @@ execute it
 sudo sh install.sh
 ```
 
-
-
 ## 1.2 Clone the code 
 
 ```bash
@@ -176,3 +174,17 @@ sudo docker run --rm -p 6080:6080 -v ${PWD}:/data -v /var/run/docker.sock:/var/r
 Click `Deploy`.
 
 Then you will have a new instance on IBM Cloud.
+
+
+
+
+
+# 3. AWS
+
+## 3.1 Install aws CLI(for Mac OS)
+
+```bash
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+```
+
