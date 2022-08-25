@@ -3,7 +3,7 @@
 
 
 
-# 1. commands
+# 1. Commands
 
 **Format and validate the configuration**
 
@@ -17,12 +17,19 @@ terraform validate
 
 **Initializes**
 
+Initializes the environment and pulls down the AWS provider.
 
+```bash
+terraform init
+```
 
 **Plan**
 
-- terraform init. Initializes the environment and pulls down the AWS provider.
-- terraform plan. Creates an execution plan for the environment and confirm no bugs are found.
+ Creates an execution plan for the environment and confirms no bugs are found.
+
+```bash
+terraform plan
+```
 
 **Create**
 
@@ -34,8 +41,6 @@ terraform apply
 # always yes
 terraform apply --auto-approve
 ```
-
-
 
 **Destroy**
 
