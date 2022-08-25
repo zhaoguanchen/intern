@@ -6,6 +6,9 @@ provider "aws" {
 }
 
 
+##
+# Elastic Ip
+##
 resource "aws_eip" "lb" {
   instance = aws_instance.web.id
   vpc      = true
@@ -18,6 +21,9 @@ output "ip_public" {
 
  
 
+##
+# VPC
+##
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
@@ -28,7 +34,6 @@ resource "aws_vpc" "main" {
 ##
 # Public Security Group
 ##
- 
 resource "aws_security_group" "public" {
   name = "public"
   description = "Public internet access"
@@ -37,7 +42,7 @@ resource "aws_security_group" "public" {
   tags = {
     Name        = "public"
     Role        = "public"
-    Project     = "cloudcasts.io"
+    Project     = "bwb"
     Environment = "var.infra_env"
     ManagedBy   = "terraform"
   }
@@ -81,9 +86,9 @@ resource "aws_security_group_rule" "public_in_https" {
 }
  
 
-
-
+##
 # instance
+##
 resource "aws_instance" "web" {
   # find the ami from was EC2 dashboard 
   ami           = "ami-02f3416038bdb17fb"
