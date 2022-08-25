@@ -48,3 +48,10 @@ terraform apply --auto-approve
 terraform destroy
 ```
 
+
+
+
+
+# Reference
+
+1. [How to launch an EC2 instance using Terraform](https://www.techtarget.com/searchcloudcomputing/tip/How-to-launch-an-EC2-instance-using-Terraform)
