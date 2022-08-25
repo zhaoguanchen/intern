@@ -45,7 +45,7 @@ terraform apply --auto-approve
 **Destroy**
 
 ```bash
-terraform destroy
+terraform destroy --auto-approve
 ```
 
 

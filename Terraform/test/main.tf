@@ -1,8 +1,8 @@
 provider "aws" {
   region = "us-east-2"
   #   add aws access key and secret key if you haven't set up aws on your computer
-  access_key = "AKIA5H743SWLHNKRMRQ5"
-  secret_key = "yIgAMmNqfP0/dBZg4PV+uUhjCbtGdY6l2ErkAWHc"
+  access_key = ""
+  secret_key = ""
 }
 
 
