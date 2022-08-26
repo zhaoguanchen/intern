@@ -55,5 +55,6 @@ terraform destroy --auto-approve
 # Reference
 
 1. [Terraform Doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair)
-2. [How to launch an EC2 instance using Terraform](https://www.techtarget.com/searchcloudcomputing/tip/How-to-launch-an-EC2-instance-using-Terraform)
-3. [Learn Terraform by Deploying a Jenkins Server on AWS](https://www.freecodecamp.org/news/learn-terraform-by-deploying-jenkins-server-on-aws/#how-to-work-with-terraform-modules)
+2. [https://cloudcasts.io/course/terraform](https://cloudcasts.io/course/terraform)
+3. [How to launch an EC2 instance using Terraform](https://www.techtarget.com/searchcloudcomputing/tip/How-to-launch-an-EC2-instance-using-Terraform)
+4. [Learn Terraform by Deploying a Jenkins Server on AWS](https://www.freecodecamp.org/news/learn-terraform-by-deploying-jenkins-server-on-aws/#how-to-work-with-terraform-modules)
