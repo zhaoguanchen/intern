@@ -178,7 +178,7 @@ See `Stack-Lifecycle-Deployment/play-with-sld/docker/play.sh` for more informati
 
 ## 2.1 Add Cloud Platform
 
-**AWS**
+#### AWS
 
 Open `Cloud Accounts`- `AWS`, add a new Account. 
 
@@ -186,7 +186,7 @@ Open `Cloud Accounts`- `AWS`, add a new Account.
 
 ![image-20221002204108359](screenshot/aws-account.png)
 
-**IBM**
+#### IBM
 
 Open `Cloud Accounts`- `IBM`, add a new Account. You can just select the default option.
 
@@ -203,6 +203,85 @@ Then click `Next`.
 ![image-20221002202358503](screenshot/select-stack.png)
 
 
+
+
+
+### 2. Create Stack
+
+#### AWS
+
+###### 1. select region
+
+**Note**: *The region should match the region you have set in step 2.1.*
+
+
+
+![image-20221002211853083](screenshot/aws-region.png)
+
+###### 2. Provide other information
+
+**Name**
+
+**Important**: The name should start with `aws-`.
+
+**Instance**
+
+instance name.
+
+**Image**
+
+Recommend `Ubuntu`.
+
+**Key**
+
+the key you created via AWS.
+
+**Zone**
+
+`us-south` is better.
+
+**Port**
+
+the port that you want to open to the public.
+
+**User data**
+
+bash commands that you want to execute.
+
+For Bwb, it is:
+
+```bash
+sudo apt-get -y remove docker docker-engine docker.io containerd runc
+sudo apt-get -y update
+sudo apt-get -y install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get -y update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo docker pull biodepot/bwb:latest
+sudo docker run --rm -p 6080:6080 -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/.X11-unix:/tmp/.X11-unix  --privileged --group-add root biodepot/bwb
+```
+
+**Note**: *remember to add `sudo` and `-y`.*
+
+#### IBM
+
+###### 1. Provide information
+
+**Name**
+
+**Important**: The name should start with `ibm-`.
+
+**Instance**
+
+instance name.
 
 **Image**
 
@@ -247,22 +326,57 @@ sudo docker run --rm -p 6080:6080 -v ${PWD}:/data -v /var/run/docker.sock:/var/r
 
 **Note**: *remember to add `sudo` and `-y`.*
 
+![image-20221002210820824](screenshot/aws-stack.png)
+
 ## 2.3 Create Deploy
 
-Click `Deploy`.
+### 2.3.1. check stacks list
 
-Then you will have a new instance on IBM Cloud.
+After creating your stack, you should see it here.
+
+![image-20221002214742795](screenshot/stack-list.png)
 
 
 
+### 2.3.2. Deploy 
 
+On the stack list page, Click the right-most button to deploy the stack.
 
-# 3. AWS
+##### 1. Create Deploy
 
-## 3.1 Install aws CLI(for Mac OS)
+**Deploy Name**
 
-```bash
-curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
-sudo installer -pkg AWSCLIV2.pkg -target /
-```
+Name of this Deploy.
+
+**Squad**
+
+select the squad.
+
+**Environment**
+
+select the environment.
+
+**Start Time and Destroy Time**
+
+Schedule opening and closing of resources.
+
+![image-20221002215344004](screenshot/deploy-stack.png)
+
+##### 2. All Deploys
+
+ After click `Deploy`,  The page will jump to `All Deploys`.
+
+![image-20221002220557915](screenshot/all-deploy.png)
+
+ **The First Operation Button**
+
+By clicking the first button, you could  `ReDeploy` or `Destroy` the resource.
+
+![image-20221002221215130](screenshot/deploy-edit.png)
+
+ **The Second Operation Button**
+
+click the second button to check the log. The image below shows the log of the AWS EC2 creation process.
+
+![image-20221002220729918](screenshot/log.png)
 
