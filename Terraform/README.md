@@ -109,7 +109,7 @@ Just like with apply, Terraform is smart enough to determine what order things s
 
 Here are some keywords for the configuration.
 
-#### provider
+### provider
 
 First, we should define the provider. Every resource type is implemented by a provider; without providers, Terraform can't manage any kind of infrastructure.
 
@@ -122,9 +122,7 @@ provider "aws" {
 }
 ```
 
-
-
-#### resource
+### resource
 
 The **resource** block defines a resource that exists within the infrastructure. A resource might be a physical component such as an EC2 instance, or it can be a logical resource such as a Heroku application.
 
@@ -134,9 +132,7 @@ In our example, the **resource type** is "aws_instance" and the **resource name*
 
 Within the resource block itself is a configuration for that resource. For our EC2 instance, we specify an AMI for Ubuntu 16.04, and request a "t2.nano" instance.
 
-
-
-#### variable
+### variable
 
 **define**
 
@@ -208,11 +204,7 @@ $ terraform plan \
   -var 'secret_key=bar' 
 ```
 
-
-
-
-
-#### output
+### output
 
 We can use output variables as a way to organize data to be easily queried and shown back to the Terraform user.
 
@@ -235,9 +227,7 @@ Outputs:
 ip_public = "3.141.241.175"
 ```
 
-
-
-#### user_data
+### user_data
 
 **inserted**
 
@@ -272,11 +262,7 @@ resource "aws_instance" "web" {
 }
 ```
 
-
-
-
-
-
+ 
 
 **User data located in another file**
 
